@@ -8,6 +8,11 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
+
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+
+use Illuminate\Database\Eloquent\Relations\HasOne;
+
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -21,6 +26,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'streak',
     ];
 
     /**
@@ -45,6 +51,11 @@ class User extends Authenticatable
     public function levels(): BelongsToMany
     {
         return $this->belongsToMany(Level::class);
+    }
+
+    public function simple_user(): HasOne
+    {
+        return $this->HasOne(SimpleUser::class);
     }
 
 }

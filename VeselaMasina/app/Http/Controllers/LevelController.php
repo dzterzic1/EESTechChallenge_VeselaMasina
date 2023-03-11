@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Level;
+use Illuminate\Contracts\Cache\Store;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Storage;
 
 class LevelController extends Controller
 {
     public function index() : Response {
-        $levels = Level->get();
+        $levels = Level::all();
         return response($levels, 200);
     }
 

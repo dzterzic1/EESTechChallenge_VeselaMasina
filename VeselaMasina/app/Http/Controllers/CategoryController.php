@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Storage;
 class CategoryController extends Controller
 {
     public function index() : Response {
-        $categories = Category->get();
+        $categories = Category::all();
         return response($categories, 200);
     }
 

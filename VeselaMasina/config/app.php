@@ -58,6 +58,19 @@ return [
 
     'asset_url' => env('ASSET_URL'),
 
+     /*
+    |--------------------------------------------------------------------------
+    | SPA URL
+    |--------------------------------------------------------------------------
+    |
+    | This URL is used by different parts of the system to define the URL of
+    | the Single Page Application that runs as frontend. This is used for setting
+    | up the correct routes wherever needed.
+    |
+    */
+    'spa_url' => env('SPA_URL', 'http://localhost:3000'),
+
+
     /*
     |--------------------------------------------------------------------------
     | Application Timezone
@@ -194,6 +207,8 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\FortifyServiceProvider::class,
+
 
     ],
 
