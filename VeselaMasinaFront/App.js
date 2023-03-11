@@ -6,6 +6,8 @@ import {
   TouchableOpacity,
   FlatList,
 } from "react-native";
+/*var sound = require("react-native-sound");
+sound.setCategory("playback");*/
 
 export default function App() {
   const [cards, setCards] = useState([]);
@@ -15,7 +17,7 @@ export default function App() {
 
   useEffect(() => {
     // Create an array of card objects with matching pairs
-    const cardValues = ["A", "B", "C", "D", "E", "F", "G", "H"];
+    const cardValues = ["1", "2", "3", "4", "5", "6", "7", "8"];
     const cardsArray = [];
     for (let i = 0; i < cardValues.length; i++) {
       cardsArray.push({ value: cardValues[i], id: i * 2 });
@@ -33,6 +35,22 @@ export default function App() {
     setSelectedCards([...selectedCards, card]);
     if (selectedCards.length === 1 && selectedCards[0].value === card.value) {
       setMatchedCards([...matchedCards, selectedCards[0].id, card.id]);
+
+      /*let zvuk = new Sound("jedan.mp3", sound.MAIN_BUNDLE, (error) => {
+        if (error) {
+          console.log("Failed to load the sound", error);
+          return;
+        }
+      });
+
+      zvuk.play((success) => {
+        if (success) {
+          console.log("audio playing ended successfully here");
+        } else {
+          console.log("Playback speed failed by audio decoding error");
+        }
+      });*/
+
       setSelectedCards([]);
     } else if (selectedCards.length === 1) {
       setTimeout(() => {
