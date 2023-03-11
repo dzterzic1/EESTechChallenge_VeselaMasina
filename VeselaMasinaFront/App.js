@@ -5,6 +5,11 @@ import {
   View,
   TouchableOpacity,
   FlatList,
+  Alert,
+  Modal,
+  ScrollView,
+  Image,
+  SafeAreaView,
 } from "react-native";
 /*var sound = require("react-native-sound");
 sound.setCategory("playback");*/
@@ -14,6 +19,21 @@ export default function App() {
   const [selectedCards, setSelectedCards] = useState([]);
   const [matchedCards, setMatchedCards] = useState([]);
   const [turns, setTurns] = useState(0);
+  const [modalVisible, setModalVisible] = useState(false);
+  const stars = [
+    {
+      id: "1",
+      title: "prazna",
+    },
+    {
+      id: "2",
+      title: "prazna",
+    },
+    {
+      id: "3",
+      title: "prazna",
+    },
+  ];
 
   useEffect(() => {
     // Create an array of card objects with matching pairs
@@ -51,22 +71,10 @@ export default function App() {
       Math.abs(selectedCards[0].id - card.id) === 8
     ) {
       setMatchedCards([...matchedCards, selectedCards[0].id, card.id]);
-
-      /*let zvuk = new Sound("jedan.mp3", sound.MAIN_BUNDLE, (error) => {
-        if (error) {
-          console.log("Failed to load the sound", error);
-          return;
-        }
-      });
-
-      zvuk.play((success) => {
-        if (success) {
-          console.log("audio playing ended successfully here");
-        } else {
-          console.log("Playback speed failed by audio decoding error");
-        }
-      });*/
-
+      console.log(matchedCards.length);
+      if (matchedCards.length === 14) {
+        setModalVisible(true);
+      }
       setSelectedCards([]);
     } else if (selectedCards.length === 1) {
       setTimeout(() => {
@@ -92,9 +100,76 @@ export default function App() {
     );
   };
 
+  const renderStar = ({ item }) => {
+    if (turns <= 40 && item.id == 1) {
+      return (
+        <Image style={styles.star} source={require("./assets/zuta.png")} />
+      );
+    } else if (item.id == 1) {
+      return (
+        <Image style={styles.star} source={require("./assets/prazna.png")} />
+      );
+    }
+    if (parseInt(turns) <= 25 && item.id == 2) {
+      return (
+        <Image style={styles.star} source={require("./assets/zuta.png")} />
+      );
+    } else if (item.id == 2) {
+      return (
+        <Image style={styles.star} source={require("./assets/prazna.png")} />
+      );
+    }
+    if (parseInt(turns) <= 20 && item.id == 3) {
+      return (
+        <Image style={styles.star} source={require("./assets/zuta.png")} />
+      );
+    } else if (item.id == 3) {
+      return (
+        <Image style={styles.star} source={require("./assets/prazna.png")} />
+      );
+    }
+  };
+
   return (
     <View style={styles.container}>
       <Text style={styles.turnsText}>Tries counter: {parseInt(turns)}</Text>
+      <View style={styles.centeredView}>
+        <Modal
+          animationType="slide"
+          transparent={true}
+          visible={modalVisible}
+          onRequestClose={() => {
+            setModalVisible(false);
+          }}
+        >
+          <View style={styles.centeredView}>
+            <View style={styles.modalView}>
+              <Text style={styles.modalTextHead}>Congratulations</Text>
+              <Text style={styles.modalText}>
+                You have successfully passed this level
+              </Text>
+              <SafeAreaView style={styles.stars}>
+                <FlatList
+                  contentContainerStyle={{
+                    flexGrow: 1,
+                    justifyContent: "space-evenly",
+                  }}
+                  data={stars}
+                  renderItem={renderStar}
+                  horizontal={true}
+                  keyExtractor={(item) => item.id}
+                />
+              </SafeAreaView>
+              <Text style={styles.modalText}>
+                Number of tries: {parseInt(turns)}
+              </Text>
+              <TouchableOpacity style={styles.button}>
+                <Text style={{ color: "white" }}>Next Level</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </Modal>
+      </View>
       <FlatList
         data={cards}
         renderItem={renderCard}
@@ -122,6 +197,12 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
   },
+  button: {
+    alignItems: "center",
+    backgroundColor: "purple",
+    padding: 10,
+    borderRadius: 10,
+  },
   card: {
     backgroundColor: "#ddd",
     margin: 4,
@@ -139,5 +220,44 @@ const styles = StyleSheet.create({
   },
   flippedCardText: {
     color: "#fff",
+  },
+  modalView: {
+    margin: 20,
+    backgroundColor: "white",
+    borderRadius: 20,
+    padding: 35,
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign: "center",
+  },
+  modalTextHead: {
+    marginBottom: 15,
+    textAlign: "center",
+    fontSize: 20,
+  },
+  centeredView: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 22,
+  },
+  star: {
+    height: 30,
+    width: 32,
+  },
+  stars: {
+    height: 50,
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
