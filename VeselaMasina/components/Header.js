@@ -1,18 +1,7 @@
 import React, { useState, useEffect } from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  TouchableOpacity,
-  FlatList,
-} from "react-native";
+import { StyleSheet, Text, View, Image } from "react-native";
 
-export default function App() {
-  const [cards, setCards] = useState([]);
-  const [selectedCards, setSelectedCards] = useState([]);
-  const [matchedCards, setMatchedCards] = useState([]);
-  const [turns, setTurns] = useState(0);
-
+const Header = () => {
   useEffect(() => {
     // Create an array of card objects with matching pairs
     const cardValues = ["A", "B", "C", "D", "E", "F", "G", "H"];
@@ -39,7 +28,7 @@ export default function App() {
         setSelectedCards([]);
       }, 1000);
     }
-    setTurns(turns + 0.5);
+    setTurns(turns + 1);
   };
 
   const renderCard = ({ item }) => {
@@ -60,7 +49,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.turnsText}>Tries: {parseInt(turns)}</Text>
+      <Text style={styles.turnsText}>Turns: {turns}</Text>
       <FlatList
         data={cards}
         renderItem={renderCard}
@@ -70,7 +59,7 @@ export default function App() {
       />
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
