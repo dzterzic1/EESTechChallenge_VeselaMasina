@@ -79,6 +79,7 @@ export default function App() {
       setMatchedCards([...matchedCards, selectedCards[0].id, card.id]);
       console.log(matchedCards.length);
       if (matchedCards.length == 10) {
+        setShowPopup(true)
       }
       if (matchedCards.length === 14) {
         setModalVisible(true);
