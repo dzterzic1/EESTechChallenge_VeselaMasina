@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('level_id') -> constrained('levels') -> onDelete('cascade');
             $table->foreignId('user_id') -> constrained('users') -> onDelete('cascade');
+            $table->integer('best_score');
             $table->timestamps();
         });
     }
