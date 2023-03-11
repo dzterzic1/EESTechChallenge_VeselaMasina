@@ -11,8 +11,6 @@ import {
   Image,
   SafeAreaView,
 } from "react-native";
-/*var sound = require("react-native-sound");
-sound.setCategory("playback");*/
 
 export default function App() {
   const [cards, setCards] = useState([]);
@@ -20,6 +18,7 @@ export default function App() {
   const [matchedCards, setMatchedCards] = useState([]);
   const [turns, setTurns] = useState(0);
   const [modalVisible, setModalVisible] = useState(false);
+
   const stars = [
     {
       id: "1",
@@ -72,6 +71,8 @@ export default function App() {
     ) {
       setMatchedCards([...matchedCards, selectedCards[0].id, card.id]);
       console.log(matchedCards.length);
+      if (matchedCards.length == 10) {
+      }
       if (matchedCards.length === 14) {
         setModalVisible(true);
       }
