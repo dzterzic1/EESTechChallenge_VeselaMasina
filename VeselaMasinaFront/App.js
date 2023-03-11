@@ -18,11 +18,24 @@ export default function App() {
   useEffect(() => {
     // Create an array of card objects with matching pairs
     const cardValues = ["1", "2", "3", "4", "5", "6", "7", "8"];
+    const cardNames = [
+      "ONE",
+      "TWO",
+      "THREE",
+      "FOUR",
+      "FIVE",
+      "SIX",
+      "SEVEN",
+      "EIGHT",
+    ];
     const cardsArray = [];
     for (let i = 0; i < cardValues.length; i++) {
-      cardsArray.push({ value: cardValues[i], id: i * 2 });
-      cardsArray.push({ value: cardValues[i], id: i * 2 + 1 });
+      cardsArray.push({ value: cardValues[i], id: i });
     }
+    for (let i = 8; i < 8 + cardValues.length; i++) {
+      cardsArray.push({ value: cardNames[i - 8], id: i });
+    }
+
     // Shuffle the cards
     const shuffledCards = cardsArray.sort(() => Math.random() - 0.5);
     setCards(shuffledCards);
@@ -33,7 +46,10 @@ export default function App() {
       return;
     }
     setSelectedCards([...selectedCards, card]);
-    if (selectedCards.length === 1 && selectedCards[0].value === card.value) {
+    if (
+      selectedCards.length === 1 &&
+      Math.abs(selectedCards[0].id - card.id) === 8
+    ) {
       setMatchedCards([...matchedCards, selectedCards[0].id, card.id]);
 
       /*let zvuk = new Sound("jedan.mp3", sound.MAIN_BUNDLE, (error) => {
@@ -78,7 +94,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.turnsText}>Tries: {parseInt(turns)}</Text>
+      <Text style={styles.turnsText}>Tries counter: {parseInt(turns)}</Text>
       <FlatList
         data={cards}
         renderItem={renderCard}
@@ -92,8 +108,8 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 50,
-    flex: 1,
+    marginTop: 190,
+
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
@@ -103,22 +119,23 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   cardsContainer: {
+    flex: 1,
     alignItems: "center",
   },
   card: {
     backgroundColor: "#ddd",
     margin: 4,
-    width: 64,
-    height: 64,
-    borderRadius: 8,
+    width: 72,
+    height: 72,
+    borderRadius: 10,
     alignItems: "center",
     justifyContent: "center",
   },
   cardText: {
-    fontSize: 24,
+    fontSize: 20,
   },
   flippedCard: {
-    backgroundColor: "#6be876",
+    backgroundColor: "purple",
   },
   flippedCardText: {
     color: "#fff",
