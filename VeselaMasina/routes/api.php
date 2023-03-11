@@ -21,5 +21,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::apiResource('categories', 'App\Http\Controllers\CategoryController');
 Route::apiResource('levels', 'App\Http\Controllers\LevelController');
-//Route::apiResource('users', 'App\Http\Controllers\UserController');
-Route::get('users', 'App\Http\Controllers\UserController@index');
+Route::apiResource('users', 'App\Http\Controllers\UserController');
+//Route::get('users', 'App\Http\Controllers\UserController@index');
