@@ -219,20 +219,6 @@ const App = ({ route }) => {
     );
   }
 
-
-  let URI = "http://veselamasina.eestec-sa.ba";
-  async function getStatistics(){
-    try {
-         //trebalo bi da prvo spasi nove bodove 
-         let response = await fetch(URI + '/api/users/1/score');
-         let responseJsonData = await response.json();
-         return `You are now number ${responseJsonData.body.score} on the scoreboard!` 
-        }
-    catch(e) {
-        console.log(e)
-    }
-    
-  }
   return (
     <View style={styles.container}>
       <ImageBackground
@@ -267,7 +253,6 @@ const App = ({ route }) => {
                 <Text style={styles.modalTextHead}>Congratulations</Text>
                 <Text style={styles.modalText}>
                   You have successfully passed this level
-                  {getStatistics()}
                 </Text>
                 <SafeAreaView style={styles.stars}>
                   <FlatList
