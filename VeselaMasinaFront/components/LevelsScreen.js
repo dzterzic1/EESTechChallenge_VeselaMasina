@@ -38,19 +38,58 @@ export default function LevelScreen({ navigation }) {
       text: "Button 4",
       onPress: () => navigation.navigate("Play", { height: 4, width: 4 }),
     },
-    { text: "Button 5", onPress: () => navigation.navigate("Play") },
-    { text: "Button 6", onPress: () => navigation.navigate("Play") },
-    { text: "Button 7", onPress: () => navigation.navigate("Play") },
-    { text: "Button 8", onPress: () => navigation.navigate("Play") },
-    { text: "Button 9", onPress: () => navigation.navigate("Play") },
-    { text: "Button 10", onPress: () => navigation.navigate("Play") },
-    { text: "Button 10", onPress: () => navigation.navigate("Play") },
-    { text: "Button 10", onPress: () => navigation.navigate("Play") },
-    { text: "Button 10", onPress: () => navigation.navigate("Play") },
-    { text: "Button 10", onPress: () => navigation.navigate("Play") },
-    { text: "Button 10", onPress: () => navigation.navigate("Play") },
-    { text: "Button 10", onPress: () => navigation.navigate("Play") },
-    { text: "Button 10", onPress: () => navigation.navigate("Play") },
+    {
+      text: "Button 5",
+      onPress: () => navigation.navigate("Play", { height: 4, width: 4 }),
+    },
+    {
+      text: "Button 6",
+      onPress: () => navigation.navigate("Play", { height: 4, width: 4 }),
+    },
+    {
+      text: "Button 7",
+      onPress: () => navigation.navigate("Play", { height: 4, width: 4 }),
+    },
+    {
+      text: "Button 8",
+      onPress: () => navigation.navigate("Play", { height: 4, width: 4 }),
+    },
+    {
+      text: "Button 9",
+      onPress: () => navigation.navigate("Play", { height: 4, width: 4 }),
+    },
+    {
+      text: "Button 10",
+      onPress: () => navigation.navigate("Play", { height: 4, width: 4 }),
+    },
+    {
+      text: "Button 10",
+      onPress: () => navigation.navigate("Play", { height: 4, width: 4 }),
+    },
+    {
+      text: "Button 10",
+      onPress: () => navigation.navigate("Play", { height: 4, width: 4 }),
+    },
+    {
+      text: "Button 10",
+      onPress: () => navigation.navigate("Play", { height: 4, width: 4 }),
+    },
+    {
+      text: "Button 10",
+      onPress: () => navigation.navigate("Play", { height: 4, width: 4 }),
+    },
+    {
+      text: "Button 10",
+      onPress: () => navigation.navigate("Play", { height: 4, width: 4 }),
+    },
+    {
+      text: "Button 10",
+      onPress: () => navigation.navigate("Play", { height: 4, width: 4 }),
+    },
+    {
+      text: "Button 10",
+      onPress: () => navigation.navigate("Play", { height: 4, width: 4 }),
+    },
   ];
 
   return (
