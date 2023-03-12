@@ -14,8 +14,7 @@ use Illuminate\Support\Facades\Hash;
 class UserController extends Controller
 {
     
-    public function index()
-    {
+    public function index() : Response {
         $users = User::all();
         return response($users, 200);
     }
