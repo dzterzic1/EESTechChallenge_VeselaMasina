@@ -14,7 +14,7 @@ import {
 function MyButton(props) {
   return (
     <TouchableOpacity style={styles.button} onPress={props.onPress}>
-      <Text style={styles.buttonText}>{props.title}</Text>
+      <Text style={styles.buttonText}>{props.text}</Text>
     </TouchableOpacity>
   );
 }
@@ -22,72 +22,72 @@ function MyButton(props) {
 export default function LevelScreen({ navigation }) {
   const buttons = [
     {
-      text: "Button 1",
+      text: "Level 1",
       accessibilityLabel: "1",
       onPress: () => navigation.navigate("Play", { height: 2, width: 2 }),
     },
     {
-      text: "Button 2",
+      text: "Level 2",
       onPress: () => navigation.navigate("Play", { height: 2, width: 3 }),
     },
     {
-      text: "Button 3",
+      text: "Level 3",
       onPress: () => navigation.navigate("Play", { height: 4, width: 3 }),
     },
     {
-      text: "Button 4",
+      text: "Level 4",
       onPress: () => navigation.navigate("Play", { height: 4, width: 4 }),
     },
     {
-      text: "Button 5",
+      text: "Level 5",
       onPress: () => navigation.navigate("Play", { height: 4, width: 4 }),
     },
     {
-      text: "Button 6",
+      text: "Level 6",
       onPress: () => navigation.navigate("Play", { height: 4, width: 4 }),
     },
     {
-      text: "Button 7",
+      text: "Level 7",
       onPress: () => navigation.navigate("Play", { height: 4, width: 4 }),
     },
     {
-      text: "Button 8",
+      text: "Level 8",
       onPress: () => navigation.navigate("Play", { height: 4, width: 4 }),
     },
     {
-      text: "Button 9",
+      text: "Level 9",
       onPress: () => navigation.navigate("Play", { height: 4, width: 4 }),
     },
     {
-      text: "Button 10",
+      text: "Level 10",
       onPress: () => navigation.navigate("Play", { height: 4, width: 4 }),
     },
     {
-      text: "Button 10",
+      text: "Level 11",
       onPress: () => navigation.navigate("Play", { height: 4, width: 4 }),
     },
     {
-      text: "Button 10",
+      text: "Level 12",
       onPress: () => navigation.navigate("Play", { height: 4, width: 4 }),
     },
     {
-      text: "Button 10",
+      text: "Level 13",
       onPress: () => navigation.navigate("Play", { height: 4, width: 4 }),
     },
     {
-      text: "Button 10",
+      text: "Level 14",
       onPress: () => navigation.navigate("Play", { height: 4, width: 4 }),
     },
     {
-      text: "Button 10",
+      text: "Level 15",
       onPress: () => navigation.navigate("Play", { height: 4, width: 4 }),
     },
     {
-      text: "Button 10",
+      text: "Level 16",
       onPress: () => navigation.navigate("Play", { height: 4, width: 4 }),
     },
     {
-      text: "Button 10",
+      text: "Level 17",
       onPress: () => navigation.navigate("Play", { height: 4, width: 4 }),
     },
   ];
@@ -104,13 +104,11 @@ export default function LevelScreen({ navigation }) {
           {buttons.map((button, index) => (
             <TouchableOpacity
               key={index}
-              style={styles.buttonDISS}
+              text={button.text}
+              style={styles.button}
               onPress={button.onPress}
             >
-              <Image
-                style={styles.lock}
-                source={require("../public/lock.png")}
-              />
+              <Text style={styles.buttonText}>{button.text}</Text>
             </TouchableOpacity>
           ))}
         </ScrollView>
