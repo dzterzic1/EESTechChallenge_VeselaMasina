@@ -24,13 +24,11 @@ class UserController extends Controller
     public function store(Request $request) : Response {
         $request->validate([
             'name' => 'required|string',
-            'email' => 'required|string',
             'password' => 'required|string',
         ]);
 
         $user = new User;
         $user->name = $request['name'];
-        $user->email = $request['email'];
         $user->password = Hash::make($request['password']);
         $user->streak = 0;
         $user->save();
@@ -45,13 +43,11 @@ class UserController extends Controller
     public function update(Request $request, User $user) : Response {
         $request->validate([
             'name' => 'required|string',
-            'email' => 'required|string',
             'password' => 'required|string',
             'streak' => 'required|integer'
         ]);
 
         $user->name = $request['name'];
-        $user->email = $request['email'];
         $user->password = Hash::make($request['password']);
         $user->streak = $request['streak'];
         $user->save();
