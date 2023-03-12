@@ -80,6 +80,18 @@ const App = ({ route }) => {
     }
   };
 
+  const successPlay = async () => {
+    try {
+      const { sound } = await Audio.Sound.createAsync(
+        require("../public/success_bell-6776.mp3")
+      );
+      setSound(sound);
+      await sound.playAsync();
+    } catch (error) {
+      console.log("Error playing sound effect:", error);
+    }
+  };
+
   const handlePopupClose = () => {
     setShowPopup(false);
   };
@@ -135,6 +147,7 @@ const App = ({ route }) => {
       selectedCards.length === 1 &&
       Math.abs(selectedCards[0].id - card.id) == (height * width) / 2
     ) {
+      successPlay();
       setMatchedCards([...matchedCards, selectedCards[0].id, card.id]);
       console.log("matchane");
       console.log(matchedCards.length);
