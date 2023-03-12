@@ -14,11 +14,10 @@ function MyButton(props) {
 
 export default function LoginScreen({ navigation }) {
 
-    const [text, setText] = useState('');
+    const [name, setName] = useState('');
+    const [password, setPassword] = useState('');
 
-    const handleInputChange = (inputValue) => {
-      setText(inputValue);
-    };
+    
   return (
     <View style={{ flex: 1 }}>
          <ImageBackground  
@@ -32,20 +31,22 @@ export default function LoginScreen({ navigation }) {
         style={styles.imageLavic}
         imageStyle= {{opacity:1}}
       > 
-       <TextInput
+      
+      <TextInput
         
       style={styles.txt }
       marginTop={"55%"}
 
-      onChangeText={handleInputChange}
-      value={text}
+      onChangeText={(name) => setName(name)}
+      value={name}
       placeholder="Type name here..."
     />
      <TextInput
       style={styles.txt}
-      
-      onChangeText={handleInputChange}
-      value={text}
+      secureTextEntry={true}
+
+      onChangeText={(password) => setPassword(password)}
+      value={password}
       placeholder="Type password here..."
     />
          <MyButton 
