@@ -130,7 +130,7 @@ const App = ({ route }) => {
   };
 
   const renderStar = ({ item }) => {
-    if (turns <= 40 && item.id == 1) {
+    if (turns <= height * width * 5 && item.id == 1) {
       return (
         <Image style={styles.star} source={require("../assets/zuta.png")} />
       );
@@ -139,7 +139,7 @@ const App = ({ route }) => {
         <Image style={styles.star} source={require("../assets/prazna.png")} />
       );
     }
-    if (parseInt(turns) <= 25 && item.id == 2) {
+    if (parseInt(turns) <= (height * width * 5) / 2 + 4 && item.id == 2) {
       return (
         <Image style={styles.star} source={require("../assets/zuta.png")} />
       );
@@ -148,7 +148,7 @@ const App = ({ route }) => {
         <Image style={styles.star} source={require("../assets/prazna.png")} />
       );
     }
-    if (parseInt(turns) <= 20 && item.id == 3) {
+    if (parseInt(turns) <= (height * width * 5) / 2 && item.id == 3) {
       return (
         <Image style={styles.star} source={require("../assets/zuta.png")} />
       );
