@@ -51,10 +51,10 @@ export default function HomeScreen({ navigation }) {
     width: 300,
     marginBottom: 20,
     alignSelf: 'center',
-    backgroundColor: '#58C03F',
+    backgroundColor: '#c75f00',
     mixBlendMode: 'normal',
     borderWidth: 5,
-    borderColor: '#19680C',
+    borderColor: '#6b2b05',
     borderRadius: 20,
     
   },

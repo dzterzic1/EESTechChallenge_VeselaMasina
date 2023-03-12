@@ -48,7 +48,7 @@ export default function LevelScreen({ navigation }) {
       ];
   
   return (
-    
+    //      / <Text style={styles. buttonTextDISS}>{button.text}</Text>/ (u liniji 62 kada je level otvoren)
     <View style={{ flex: 1,  }}>
        <ImageBackground  
         source={require('../public/4000.jpg')}
@@ -58,7 +58,7 @@ export default function LevelScreen({ navigation }) {
        <ScrollView style={styles.scrl}>
       {buttons.map((button, index) => (
         <TouchableOpacity  key={index}  style={styles. buttonDISS} onPress={button.onPress}>
-             <Text style={styles. buttonTextDISS}>{button.text}</Text>
+     
           <Image style={styles.lock} source={require('../public/lock.png')} />
      
         </TouchableOpacity>
@@ -84,10 +84,10 @@ const styles = StyleSheet.create({
       width: 300,
       marginBottom: 20,
       alignSelf: 'center',
-      backgroundColor: '#58C03F',
+      backgroundColor: '#c75f00',
       mixBlendMode: 'normal',
       borderWidth: 5,
-      borderColor: '#19680C',
+      borderColor: '#6b2b05',
       borderRadius: 20,
           
     },
@@ -100,10 +100,10 @@ const styles = StyleSheet.create({
         width: 300,
         marginBottom: 20,
         alignSelf: 'center',
-        backgroundColor: '#41982B',
+        backgroundColor: '#c75f00',
         mixBlendMode: 'normal',
         borderWidth: 5,
-        borderColor: '#19680C',
+        borderColor: '#6b2b05',
         borderRadius: 20,
             
       },
@@ -119,7 +119,8 @@ const styles = StyleSheet.create({
         color: '#6B7672',
         fontSize: 27,
         fontWeight: 'medium',
-        zIndex: 1,
+        zIndex: 0,
+        marginTop:20,
        
       },
     image:{
@@ -132,12 +133,12 @@ const styles = StyleSheet.create({
     },
     lock:{
         width: 50,
-        height: 50,
+        height: 60,
         marginBottom: 5,
-        marginTop: -35,
+        marginTop: '3%',
         alignSelf: 'center',
-        opacity:.7,
-        zIndex: 0,
+        opacity:.6,
+        zIndex: 1,
       },
     imageBg: {
       flex: 1,

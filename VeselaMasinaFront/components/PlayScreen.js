@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { ImageBackground } from "react-native";
 import {
   StyleSheet,
   Text,
@@ -138,9 +139,21 @@ export default function App() {
       );
     }
   };
+  function MyButton(props) {
+    return (
+      <TouchableOpacity style={styles.close} onPress={props.onPress}>
+        <Text style={styles.buttonText}>{props.title}</Text>
+      </TouchableOpacity>
+    );
+  }
 
   return (
     <View style={styles.container}>
+       <ImageBackground  
+        source={require('../public/pozzSaLavicem.png')}
+        style={styles.imageBg}
+        imageStyle= {{opacity:0.2}}
+      >
       <Text style={styles.turnsText}>Tries counter: {parseInt(turns)}</Text>
       <Modal visible={showPopup} animationType="fade" transparent={true}>
         <View style={styles.popup}>
@@ -149,11 +162,10 @@ export default function App() {
             source={require("../assets/zuta.png")}
           />
           <Text style={styles.popupText}>You are doing great, keep going</Text>
-          <Button
-            style={styles.close}
-            title="Close"
-            onPress={handlePopupClose}
-          />
+          <MyButton 
+        title="Close"
+        onPress={handlePopupClose}
+      />
         </View>
       </Modal>
       <View style={styles.centeredView}>
@@ -194,31 +206,34 @@ export default function App() {
         </Modal>
       </View>
       <FlatList
+        style={{alignSelf: "center",  backgroundColor: 'transparent' }}
         data={cards}
         renderItem={renderCard}
         keyExtractor={(item) => item.id.toString()}
         numColumns={4}
         contentContainerStyle={styles.cardsContainer}
       />
+      </ImageBackground>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 190,
-
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+    flex: 1, 
   },
   turnsText: {
     fontSize: 24,
     marginBottom: 16,
+    alignSelf: 'center',
+    marginTop:'20%',
   },
   cardsContainer: {
     flex: 1,
     alignItems: "center",
+    alignSelf: 'center',
+    backgroundColor: 'transparent',
+    
   },
   button: {
     alignItems: "center",
@@ -227,13 +242,19 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   card: {
-    backgroundColor: "#ddd",
+    backgroundColor: "#FD984A",
     margin: 4,
     width: 72,
     height: 72,
     borderRadius: 10,
     alignItems: "center",
     justifyContent: "center",
+    alignSelf: 'center',
+  
+  },imageBg: {
+    flex: 1,
+  
+   paddingTop: '30%'
   },
   cardText: {
     fontSize: 20,
@@ -298,7 +319,23 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   close: {
-    backgroundColor: "#ffaad7",
-    color: "purple",
+    borderRadius: 25,
+    justifyContent: 'center',
+    height: 50,
+    width: 200,
+    marginBottom: 20,
+    alignSelf: 'center',
+    backgroundColor: '#58C03F',
+    mixBlendMode: 'normal',
+    borderWidth: 5,
+    borderColor: '#19680C',
+    borderRadius: 20,
   },
+  buttonText: { 
+    textAlign: 'center',
+    color: '#FFFFFF',
+    fontSize: 20,
+    fontWeight: 'medium',
+   
+  }
 });
