@@ -64,4 +64,32 @@ class UserController extends Controller
         return response($user, 204);
     }
 
+    public function score(User $user) : int {
+        
+        $levels = $user.levels();
+        $score = 0;
+        foreach($user->levels as $level){
+            $score+= $level->pivot->best_score;
+        }
+        $users = User::all();
+        $score2 = 0;
+        $score3 = 0;
+
+        foreach($users[1]->levels as $level){
+            $score2+= $level->pivot->best_score;
+        }
+        foreach($users[2]->levels as $level){
+            $score3+= $level->pivot->best_score;
+        }
+
+        $place = 3;
+        if(score<=score2){
+            $place=$place-1;
+        }
+        if(score<=score3){
+            $place=$place-1;
+        }
+        return response($place, 200);
+    }
+
 }
