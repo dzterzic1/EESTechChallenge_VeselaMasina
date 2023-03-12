@@ -30,7 +30,7 @@ export default function HomeScreen({ navigation }) {
         <Image style={styles.image} source={require("../public/logo.png")} />
         <MyButton
           title="Continue level"
-          onPress={() => navigation.navigate("Play")}
+          onPress={() => navigation.navigate("Play", { height: 4, width: 4 })}
         />
         <MyButton
           title="Change level"
