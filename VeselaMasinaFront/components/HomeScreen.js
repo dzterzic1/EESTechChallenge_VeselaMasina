@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   ImageBackground,
   FlatList,
-  Button
+  Button,
 } from "react-native";
 
 function MyButton(props) {
@@ -21,61 +21,57 @@ function MyButton(props) {
 //<Image style={styles.image} source={require('../public/waffle.png')} />
 export default function HomeScreen({ navigation }) {
   return (
-   
-    <View style={{ flex: 1,  }}>
-       <ImageBackground  
-        source={require('../public/4000.jpg')}
+    <View style={{ flex: 1 }}>
+      <ImageBackground
+        source={require("../public/4000.jpg")}
         style={styles.imageBg}
-        imageStyle= {{opacity:0.2}}
+        imageStyle={{ opacity: 0.2 }}
       >
-       <Image style={styles.image} source={require('../public/logo.png')} />
-      <MyButton 
-        title="Continue level"
-        onPress={() => navigation.navigate("Play")}
-      />
-      <MyButton
-        title="Change level"
-        onPress={() => navigation.navigate("Level")}
-      />
+        <Image style={styles.image} source={require("../public/logo.png")} />
+        <MyButton
+          title="Continue level"
+          onPress={() => navigation.navigate("Play")}
+        />
+        <MyButton
+          title="Change level"
+          onPress={() => navigation.navigate("Level")}
+        />
       </ImageBackground>
     </View>
   );
 }
 
-
- const styles = StyleSheet.create({
+const styles = StyleSheet.create({
   button: {
     borderRadius: 25,
-    justifyContent: 'center',
+    justifyContent: "center",
     height: 90,
     width: 300,
     marginBottom: 20,
-    alignSelf: 'center',
-    backgroundColor: '#c75f00',
-    mixBlendMode: 'normal',
+    alignSelf: "center",
+    backgroundColor: "#c75f00",
+    mixBlendMode: "normal",
     borderWidth: 5,
-    borderColor: '#6b2b05',
+    borderColor: "#6b2b05",
     borderRadius: 20,
-    
   },
-  buttonText: { 
-    textAlign: 'center',
-    color: '#FFFFFF',
+  buttonText: {
+    textAlign: "center",
+    color: "#FFFFFF",
     fontSize: 27,
-    fontWeight: 'medium',
-   
+    fontWeight: "medium",
   },
-  image:{
-    width: '59%',
-    height: '20%',
+  image: {
+    width: "63%",
+    height: "20%",
     marginBottom: 30,
     marginTop: 10,
-    alignSelf: 'center',
-    opacity:1,
+    alignSelf: "center",
+    opacity: 1,
   },
   imageBg: {
     flex: 1,
-   justifyContent: 'flex-end',
-   paddingBottom: '60%',
+    justifyContent: "flex-end",
+    paddingBottom: "60%",
   },
 });
