@@ -13,6 +13,17 @@ import {
   Button,
   SafeAreaView,
 } from "react-native";
+import { Audio } from "expo-av";
+const broj1 = require("../public/jedan.mp3");
+const broj2 = require("../public/dva.mp3");
+const broj3 = require("../public/tri.mp3");
+const broj4 = require("../public/cetiri.mp3");
+const broj5 = require("../public/pet.mp3");
+const broj6 = require("../public/sest.mp3");
+const broj7 = require("../public/sedam.mp3");
+const broj8 = require("../public/osam.mp3");
+const broj9 = require("../public/devet.mp3");
+const broj10 = require("../public/deset.mp3");
 
 const cardValues = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
 const cardNames = [
@@ -26,6 +37,19 @@ const cardNames = [
   "EIGHT",
   "NINE",
   "TEN",
+];
+
+const sounds = [
+  broj1,
+  broj2,
+  broj3,
+  broj4,
+  broj5,
+  broj6,
+  broj7,
+  broj8,
+  broj9,
+  broj10,
 ];
 
 function firstNValues(n) {
@@ -44,6 +68,17 @@ const App = ({ route }) => {
   const [turns, setTurns] = useState(0);
   const [modalVisible, setModalVisible] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
+  const [sound, setSound] = useState();
+
+  const playSoundEffect = async (number) => {
+    try {
+      const { sound } = await Audio.Sound.createAsync(sounds[number]);
+      setSound(sound);
+      await sound.playAsync();
+    } catch (error) {
+      console.log("Error playing sound effect:", error);
+    }
+  };
 
   const handlePopupClose = () => {
     setShowPopup(false);
@@ -89,13 +124,18 @@ const App = ({ route }) => {
     if (selectedCards.length === 2 || matchedCards.includes(card.id)) {
       return;
     }
+    var number = card.id;
+    if (number >= (height * width) / 2) {
+      number = card.id - (height * width) / 2;
+    }
+
+    playSoundEffect(number);
     setSelectedCards([...selectedCards, card]);
     if (
       selectedCards.length === 1 &&
       Math.abs(selectedCards[0].id - card.id) == (height * width) / 2
     ) {
       setMatchedCards([...matchedCards, selectedCards[0].id, card.id]);
-      //console.log(matchedCards.length);
       console.log("matchane");
       console.log(matchedCards.length);
       if (matchedCards.length == 2 * ((height * width - 1) / 2)) {
